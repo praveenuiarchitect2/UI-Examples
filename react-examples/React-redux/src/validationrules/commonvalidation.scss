@@ -1,0 +1,13 @@
+.invalid {
+    color: #d60000;
+    position: relative;
+    font-size: 14px;
+    text-align: left;
+}
+
+.invalid-bdr input, .invalid-bdr textarea{
+    border-color: #d60000 !important;
+}
+.inputs {
+    width: 100%;
+}

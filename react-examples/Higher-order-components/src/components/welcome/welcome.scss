@@ -1,0 +1,28 @@
+.welcome-main {
+    a, a:active, a:hover {
+        color: #50616f;
+    }
+    .ui-example {
+        background: #000;
+        border:0;
+        margin-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .tab-section{
+        .panel-default {
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+    }
+    .ui-title{
+        color: #fff;
+    }
+    .ui-links {
+        cursor: pointer;
+    }
+    .panel-body-height {
+        // min-height: calc(50vh);
+        // height: calc(100vh - 200px);
+    }
+}
