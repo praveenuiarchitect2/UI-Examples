@@ -106,7 +106,14 @@ class InputText extends React.Component {
         }
         break
       case 'optradio':
-        if (!e.target.checked) {
+        let ele = $$('[name=optradio]')
+        let isChecked = false
+        for(let i =0, len=ele.length; i<len; i++) {
+          if(ele[i].checked) {
+            isChecked = true
+          }
+        }
+        if (!isChecked && !e.target.checked) {
           setErroNode(e, this, "Please select one of the option")
         } else {
           removeErrorNode(e, this)
