@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 import { Router, Route, hashHistory } from 'react-router'
 import Welcome from './components/welcome/welcome'
 import FormValidations from './components/form/form'
+import ReactRedux from './components/reactredux/reactredux'
+import store from "./store/index";
 require('../node_modules/jquery/dist/jquery.js')
 require('../node_modules/jquery-ui-dist/jquery-ui.js')
 require('es6-promise/auto')
@@ -17,7 +19,6 @@ require('../node_modules/owl-slider/js/owl.carousel.js')
 require('../node_modules/owl-slider/css/owl.carousel.css')
 require('../node_modules/owl-slider/css/owl.theme.default.css')
 require('../node_modules/rangeslider.js/dist/rangeslider.js')
-import './styles/_base.scss'
 import './styles/core.scss'
 
 // ========================================================
@@ -41,10 +42,11 @@ const checkLoggedIn = (nextState, replace) => {
 
 let render = () => {
   ReactDOM.render(
-    <Provider>
+    <Provider store={store}>
       <Router history={hashHistory}>
         <Route component={Welcome} path='/welcomepage'>
           <Route components={FormValidations} path='/formvalidation' onEnter={checkLoggedIn}/>
+          <Route components={ReactRedux} path='/react-redux' onEnter={checkLoggedIn}/>
           <Route component={FormValidations} path='/' onEnter={checkLoggedIn} />
         </Route>
       </Router>

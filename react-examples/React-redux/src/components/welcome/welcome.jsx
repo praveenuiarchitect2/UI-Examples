@@ -13,6 +13,7 @@ class Welcome extends React.Component {
 
     this.handleClick = this.handleClick.bind(this)
     this.getData = this.getData.bind(this)
+    this.showPreviousPage = this.showPreviousPage.bind(this) 
   }
   getData (data) {
     this.setState(data)
@@ -23,9 +24,15 @@ class Welcome extends React.Component {
     this.setState({ showForm: true })
     if (tar === '1') {
       hashHistory.push('/formvalidation')
+    } else if (tar === '3') { 
+      hashHistory.push('/react-redux')
     } else {
-      hashHistory.push('/welcome')
+      hashHistory.push('/')
     }
+  }
+  showPreviousPage() {
+    this.setState({ showForm: false })
+    hashHistory.push('/')
   }
 
   render() {
@@ -75,13 +82,19 @@ class Welcome extends React.Component {
                   <div className={showForm ? 'hide' : 'show'}>
                     <ul>
                       <li><a onClick={this.handleClick} name="1">Form Validations.</a></li>
-                      <li><a href="#">Higher Order Components</a></li>
-                      <li><a href="#">React/Redux</a></li>
+                      <li><a >Higher Order Components</a></li>
+                      <li><a  onClick={this.handleClick} name="3">React/Redux</a></li>
                       <li><a href="#">Stateless/Stateful Components</a></li>
                       <li><a href="#">FAQ's</a></li>
                     </ul>
                   </div>
                   <div className={showForm ? 'show' : 'hide'}>
+                  <div className="row">
+                    <div className="col-md-4 col-lg-4">
+                      <a  class="previous" onClick={this.showPreviousPage}>&laquo; Previous</a>
+                    </div>
+                  </div>
+       
                     {childrenWithProps}
                   </div>
                 </div>

@@ -13,6 +13,7 @@ class Welcome extends React.Component {
 
     this.handleClick = this.handleClick.bind(this)
     this.getData = this.getData.bind(this)
+    this.showPreviousPage = this.showPreviousPage.bind(this) 
   }
   getData (data) {
     this.setState(data)
@@ -24,8 +25,12 @@ class Welcome extends React.Component {
     if (tar === '1') {
       hashHistory.push('/formvalidation')
     } else {
-      hashHistory.push('/welcome')
+      hashHistory.push('/')
     }
+  }
+  showPreviousPage() {
+    this.setState({ showForm: false })
+    hashHistory.push('/')
   }
 
   render() {
@@ -82,6 +87,12 @@ class Welcome extends React.Component {
                     </ul>
                   </div>
                   <div className={showForm ? 'show' : 'hide'}>
+                  <div className="row">
+                    <div className="col-md-4 col-lg-4">
+                      <a  class="previous" onClick={this.showPreviousPage}>&laquo; Previous</a>
+                    </div>
+                  </div>
+       
                     {childrenWithProps}
                   </div>
                 </div>
