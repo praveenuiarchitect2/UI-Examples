@@ -1,0 +1,55 @@
+1. What is react js
+2. What is higher order component
+3. React Stateless and stateful component
+4. What is use of redux
+5. Draw redux with React daigram
+6. React life cycle and explain each methods
+7. Disadvantage of reactjs
+8. What is virtual dom
+9. How do you test cases using reactjs
+10. Differentiate between Real DOM and Virtual DOM.
+11. What are the features of React? 
+12. List some of the major advantages of React.
+13. What are the limitations of React?
+14. What is JSX?
+15. What do you understand by Virtual DOM? Explain its working.
+16. How different is React’s ES6 syntax when compared to ES5?
+17. What do you understand from “In React, everything is a component.”
+18. Explain the purpose of render() in React.
+19. How can you embed two or more components into one?
+20. What is Props?
+21. What is a state in React and how is it used?
+22. Differentiate between states and props.
+23. How can you update the state of a component?
+24. What is arrow function in React? How is it used?
+25. Differentiate between stateful and stateless components.
+26. What are the different phases of React component’s lifecycle?
+27. Explain the lifecycle methods of React components in detail.
+28. What is an event in React?
+29. How do you create an event in React?
+30. What are synthetic events in React?
+31. What do you understand by refs in React?
+32. List some of the cases when you should use Refs.
+33. How do you modularize code in React?
+34. How are forms created in React?
+35. What do you know about controlled and uncontrolled components?
+36. What are Higher Order Components(HOC)?
+37. What can you do with HOC?
+38. What are Pure Components?
+39. What is the significance of keys in React?
+40. What were the major problems with MVC framework?
+41. What is Redux?
+42. What are the three principles that Redux follows?
+43. What do you understand by “Single source of truth”?
+44. List down the components of Redux.
+45. Show how the data flows through Redux?
+46. How are Actions defined in Redux?
+47. Explain the role of Reducer.
+48. What is the significance of Store in Redux?
+49. How is Redux different from Flux?
+50. What are the advantages of Redux?
+51. What is React Router?
+52. Why is switch keyword used in React Router v4?
+53. Why do we need a Router in React?
+54. List down the advantages of React Router.
+55. How is React Router different from conventional routing?
