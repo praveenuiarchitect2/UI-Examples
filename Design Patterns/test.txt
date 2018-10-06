@@ -1,0 +1,160 @@
+1. Module Design Pattern also A variation of the module pattern is called the Revealing Module Pattern
+(function() {
+
+    // declare private variables and/or functions
+
+    return {
+      // declare public variables and/or functions
+    }
+
+})();
+
+var HTMLChanger = (function() {
+  var contents = 'contents'
+
+  var changeHTML = function() {
+    var element = document.getElementById('attribute-to-change');
+    element.innerHTML = contents;
+  }
+
+  return {
+    callChangeHTML: function() {
+      changeHTML();
+      console.log(contents);
+    }
+  };
+
+})();
+
+HTMLChanger.callChangeHTML();       // Outputs: 'contents'
+console.log(HTMLChanger.contents);  // undefined
+
+2. Prototype Design Pattern
+
+var TeslaModelS = function() {
+  this.numWheels    = 4;
+  this.manufacturer = 'Tesla';
+  this.make         = 'Model S';
+}
+
+TeslaModelS.prototype.go = function() {
+  // Rotate wheels
+}
+
+TeslaModelS.prototype.stop = function() {
+  // Apply brake pads
+}
+
+3. Observer Design Pattern( AngularJS example that encompasses the observer pattern)
+// Controller 1
+$scope.$on('nameChanged', function(event, args) {
+    $scope.name = args.name;
+});
+
+...
+
+// Controller 2
+$scope.userNameChanged = function(name) {
+    $scope.$emit('nameChanged', {name: name});
+};
+
+var Subject = function() {
+  this.observers = [];
+
+  return {
+    subscribeObserver: function(observer) {
+      this.observers.push(observer);
+    },
+    unsubscribeObserver: function(observer) {
+      var index = this.observers.indexOf(observer);
+      if(index > -1) {
+        this.observers.splice(index, 1);
+      }
+    },
+    notifyObserver: function(observer) {
+      var index = this.observers.indexOf(observer);
+      if(index > -1) {
+        this.observers[index].notify(index);
+      }
+    },
+    notifyAllObservers: function() {
+      for(var i = 0; i < this.observers.length; i++){
+        this.observers[i].notify(i);
+      };
+    }
+  };
+};
+
+var Observer = function() {
+  return {
+    notify: function(index) {
+      console.log("Observer " + index + " is notified!");
+    }
+  }
+}
+
+var subject = new Subject();
+
+var observer1 = new Observer();
+var observer2 = new Observer();
+var observer3 = new Observer();
+var observer4 = new Observer();
+
+subject.subscribeObserver(observer1);
+subject.subscribeObserver(observer2);
+subject.subscribeObserver(observer3);
+subject.subscribeObserver(observer4);
+
+subject.notifyObserver(observer2); // Observer 2 is notified!
+
+subject.notifyAllObservers();
+// Observer 1 is notified!
+// Observer 2 is notified!
+// Observer 3 is notified!
+// Observer 4 is notified!
+
+
+4. Singleton
+var printer = (function () {
+
+  var printerInstance;
+
+  function create () {
+
+    function print() {
+      // underlying printer mechanics
+    }
+
+    function turnOn() {
+      // warm up
+      // check for paper
+    }
+
+    return {
+      // public + private states and behaviors
+      print: print,
+      turnOn: turnOn
+    };
+  }
+
+  return {
+    getInstance: function() {
+      if(!printerInstance) {
+        printerInstance = create();
+      }
+      return printerInstance;
+    }
+  };
+
+  function Singleton () {
+    if(!printerInstance) {
+      printerInstance = intialize();
+    }
+  };
+
+})();
+
+var officePrinter = printer.getInstance();
+
+
+Q: React js uses composition design pattern
