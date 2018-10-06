@@ -1,0 +1,300 @@
+1. what is difference between async and defer?
+Ans: async and defer both used for non blocking external javascript loads.. async will not load dependency or where as defer will load dependency or eg: jquery need some other library dependecy etc..
+2. Create two dimentional array
+3.What is event delegation, and how does it work?
+Ans:  this concept relies on the fact that if you want some code to run when you click on any one of a large number of child elements, you can set the event listener on their parent and have events that happen on them bubble up to their parent, rather than having to set the event listener on every child individually.
+4. unshift() and shift() work in exactly the same way as push() and pop(), respectively, except that they work on the beginning of the array, not the end.
+5. Event bubbling and Event capturing
+6. Constructor
+Ans: JavaScript uses special functions called constructor functions
+7.Other ways to create object instances
+var person1 = new Object();
+var person2 = Object.create(person1);
+8.OOps?
+function createNewPerson(name) {
+  var obj = {};
+  obj.name = name;
+  obj.greeting = function() {
+    alert('Hi! I\'m ' + this.name + '.');
+  };
+  return obj;
+}
+var salva = createNewPerson('Salva');
+salva.name;
+salva.greeting();
+// Person Constructor
+function Person(name) {
+    this.name = name;
+    this.greeting = function() {
+      alert('Hi! I\'m ' + this.name + '.');
+    };
+  }
+  var person1 = new Person('Bob');
+  var person2 = new Person('Sarah');
+  person1.greeting()
+  person2.greeting()
+9. Prototype?
+Prototypes are the mechanism by which JavaScript objects inherit features from one another.
+10. Prototype inheritance?
+step 1: 
+function Person(first, last, age, gender, interests) {
+  this.name = {
+    first,
+    last
+  };
+  this.age = age;
+  this.gender = gender;
+  this.interests = interests;
+};
+step2 : 
+Person.prototype.greeting = function() {
+  alert('Hi! I\'m ' + this.name.first + '.');
+};
+step3:
+function Teacher(first, last, age, gender, interests, subject) {
+  Person.call(this, first, last, age, gender, interests);
+
+  this.subject = subject;
+}
+step4:
+Teacher.prototype = Object.create(Person.prototype);
+Teacher.prototype.constructor = Teacher;
+
+ES5 Classes:
+class Person {
+  constructor(first, last, age, gender, interests) {
+    this.name = {
+      first,
+      last
+    };
+    this.age = age;
+    this.gender = gender;
+    this.interests = interests;
+  }
+
+  greeting() {
+    console.log(`Hi! I'm ${this.name.first}`);
+  };
+
+  farewell() {
+    console.log(`${this.name.first} has left the building. Bye for now!`);
+  };
+}
+let han = new Person('Han', 'Solo', 25, 'male', ['Smuggling']);
+han.greeting();
+// Hi! I'm Han
+
+let leia = new Person('Leia', 'Organa', 19, 'female', ['Government']);
+leia.farewell();
+
+Extends:
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    this.name = {
+      first,
+      last
+    };
+
+  this.age = age;
+  this.gender = gender;
+  this.interests = interests;
+  // subject and grade are specific to Teacher
+  this.subject = subject;
+  this.grade = grade;
+  }
+}
+ES5 setters and getters:
+class Teacher extends Person {
+  constructor(first, last, age, gender, interests, subject, grade) {
+    super(first, last, age, gender, interests);
+    // subject and grade are specific to Teacher
+    this._subject = subject;
+    this.grade = grade;
+  }
+
+  get subject() {
+    return this._subject;
+  }
+
+  set subject(newSubject) {
+    this._subject = newSubject;
+  }
+}
+// Check the default value
+console.log(snape.subject) // Returns "Dark arts"
+
+// Change the value
+snape.subject="Balloon animals" // Sets _subject to "Balloon animals"
+
+// Check it again and see if it matches the new value
+console.log(snape.subject) // Returns "Balloon animals"
+
+Ajax:
+var requestURL = 'https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json';
+var request = new XMLHttpRequest();
+request.open('GET', requestURL);
+request.responseType = 'json';
+request.send();
+request.onload = function() {
+  var superHeroes = request.response;
+  populateHeader(superHeroes);
+  showHeroes(superHeroes);
+}
+function populateHeader(jsonObj) {
+  var myH1 = document.createElement('h1');
+  myH1.textContent = jsonObj['squadName'];
+  header.appendChild(myH1);
+
+  var myPara = document.createElement('p');
+  myPara.textContent = 'Hometown: ' + jsonObj['homeTown'] + ' // Formed: ' + jsonObj['formed'];
+  header.appendChild(myPara);
+}
+function showHeroes(jsonObj) {
+  var heroes = jsonObj['members'];
+      
+  for (var i = 0; i < heroes.length; i++) {
+    var myArticle = document.createElement('article');
+    var myH2 = document.createElement('h2');
+    var myPara1 = document.createElement('p');
+    var myPara2 = document.createElement('p');
+    var myPara3 = document.createElement('p');
+    var myList = document.createElement('ul');
+
+    myH2.textContent = heroes[i].name;
+    myPara1.textContent = 'Secret identity: ' + heroes[i].secretIdentity;
+    myPara2.textContent = 'Age: ' + heroes[i].age;
+    myPara3.textContent = 'Superpowers:';
+        
+    var superPowers = heroes[i].powers;
+    for (var j = 0; j < superPowers.length; j++) {
+      var listItem = document.createElement('li');
+      listItem.textContent = superPowers[j];
+      myList.appendChild(listItem);
+    }
+
+    myArticle.appendChild(myH2);
+    myArticle.appendChild(myPara1);
+    myArticle.appendChild(myPara2);
+    myArticle.appendChild(myPara3);
+    myArticle.appendChild(myList);
+
+    section.appendChild(myArticle);
+  }
+}
+Q: JavaScript is case-sensitive and uses the Unicode character set
+ANS: Yes
+Q: Variable hoisting?
+This concept is known as hoisting; variables in JavaScript are in a sense "hoisted" or lifted to the top of the function or statement.
+Variable hoistingSection
+Another unusual thing about variables in JavaScript is that you can refer to a variable declared later, without getting an exception. This concept is known as hoisting; variables in JavaScript are in a sense "hoisted" or lifted to the top of the function or statement. However, variables that are hoisted return a value of undefined. So even if you declare and initialize after you use or refer to this variable, it still returns undefined.
+
+/**
+ * Example 1
+ */
+console.log(x === undefined); // true
+var x = 3;
+
+/**
+ * Example 2
+ */
+// will return a value of undefined
+var myvar = 'my value';
+ 
+(function() {
+  console.log(myvar); // undefined
+  var myvar = 'local value';
+})();
+The above examples will be interpreted the same as:
+
+/**
+ * Example 1
+ */
+var x;
+console.log(x === undefined); // true
+x = 3;
+ 
+/**
+ * Example 2
+ */
+var myvar = 'my value';
+ 
+(function() {
+  var myvar;
+  console.log(myvar); // undefined
+  myvar = 'local value';
+})();
+Because of hoisting, all var statements in a function should be placed as near to the top of the function as possible. This best practice increases the clarity of the code.
+
+In ECMAScript 2015, let (const) does not hoist the variable to the top of the block. Referencing the variable in the block before the variable declaration results in a ReferenceError. The variable is in a "temporal dead zone" from the start of the block until the declaration is processed.
+
+console.log(x); // ReferenceError
+let x = 3;
+Function hoistingSection
+For functions, only the function declaration gets hoisted to the top and not the function expression.
+
+/* Function declaration */
+
+foo(); // "bar"
+
+function foo() {
+  console.log('bar');
+}
+
+
+/* Function expression */
+
+baz(); // TypeError: baz is not a function
+
+var baz = function() {
+  console.log('bar2');
+};
+Q:Falsy values
+false
+undefined
+null
+0
+NaN
+the empty string ("")
+
+Q:Promise:
+avaScript gains support for Promise objects allowing you to control the flow of deferred and asynchronous operations.
+pending: initial state, not fulfilled or rejected.
+fulfilled: successful operation
+rejected: failed operation.
+settled: the Promise is either fulfilled or rejected, but not pending.
+function imgLoad(url) {
+  return new Promise(function(resolve, reject) {
+    var request = new XMLHttpRequest();
+    request.open('GET', url);
+    request.responseType = 'blob';
+    request.onload = function() {
+      if (request.status === 200) {
+        resolve(request.response);
+      } else {
+        reject(Error('Image didn\'t load successfully; error code:' 
+                     + request.statusText));
+      }
+    };
+    request.onerror = function() {
+      reject(Error('There was a network error.'));
+    };
+    request.send();
+  });
+}
+
+Q: labeled statement
+markLoop:
+while (theMark == true) {
+   doSomething();
+}
+Q: for...of statement is used to retrive similar data
+var arr = [3, 5, 7];
+arr.foo = 'hello';
+
+for (var i in arr) {
+   console.log(i); // logs "0", "1", "2", "foo"
+}
+
+for (var i of arr) {
+   console.log(i); // logs 3, 5, 7
+}

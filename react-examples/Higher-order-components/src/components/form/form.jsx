@@ -13,6 +13,7 @@ class FormValidations extends React.Component {
     }
 
     this.handleSubmit = this.handleSubmit.bind(this)
+    
   }
 
   handleSubmit() {
@@ -23,7 +24,9 @@ class FormValidations extends React.Component {
       target[i].dispatchEvent(event)
     }    
   }
+  showPreviousPage() {
 
+  }
   render() {
     return (
       <div className="welcome-main">
