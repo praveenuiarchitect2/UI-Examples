@@ -1,0 +1,19 @@
+own event creating
+image upload content type in rest api
+password send convert base64
+design patters of react and angularjs
+popular design patters in javascript
+
+mozilla mdn go through
+module
+promisess
+design patterns
+singleton design patterns
+
+
+
+1. Component
+2. Reducer
+3. actions
+4. Constants
+5. Store

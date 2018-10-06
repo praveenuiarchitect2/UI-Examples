@@ -298,3 +298,259 @@ for (var i in arr) {
 for (var i of arr) {
    console.log(i); // logs 3, 5, 7
 }
+Q: arguments.callee
+callee is a property of the arguments object. It can be used to refer to the currently executing function inside the function body of that function. This is useful when the name of the function is unknown, such as within a function expression with no name (also called "anonymous functions")
+function create() {
+   return function(n) {
+      if (n <= 1)
+         return 1;
+      return n * arguments.callee(n - 1);
+   };
+}
+
+var result = create()(5); // returns 120 (5 * 4 * 3 * 2 * 1)
+Q:Rest parameters
+function multiply(multiplier, ...theArgs) {
+  return theArgs.map(x => multiplier * x);
+}
+
+var arr = multiply(2, 1, 2, 3);
+console.log(arr); // [2, 4, 6]
+
+Q: Destructuring
+var foo = ['one', 'two', 'three'];
+
+// without destructuring
+var one   = foo[0];
+var two   = foo[1];
+var three = foo[2];
+
+// with destructuring
+var [one, two, three] = foo;
+Q: Spread operator
+var parts = ['shoulders', 'knees'];
+var lyrics = ['head', ...parts, 'and', 'toes'];
+
+Q: Array Methods
+
+forEach(callback[, thisObject]) executes callback on every array item and returns undefined.
+
+var a = ['a', 'b', 'c'];
+a.forEach(function(element) { console.log(element); }); 
+// logs each item in turn
+map(callback[, thisObject]) returns a new array of the return value from executing callback on every array item.
+
+var a1 = ['a', 'b', 'c'];
+var a2 = a1.map(function(item) { return item.toUpperCase(); });
+console.log(a2); // logs ['A', 'B', 'C']
+filter(callback[, thisObject]) returns a new array containing the items for which callback returned true.
+
+var a1 = ['a', 10, 'b', 20, 'c', 30];
+var a2 = a1.filter(function(item) { return typeof item === 'number'; });
+console.log(a2); // logs [10, 20, 30]
+every(callback[, thisObject]) returns true if callback returns true for every item in the array.
+
+function isNumber(value) {
+  return typeof value === 'number';
+}
+var a1 = [1, 2, 3];
+console.log(a1.every(isNumber)); // logs true
+var a2 = [1, '2', 3];
+console.log(a2.every(isNumber)); // logs false
+some(callback[, thisObject]) returns true if callback returns true for at least one item in the array.
+
+function isNumber(value) {
+  return typeof value === 'number';
+}
+var a1 = [1, 2, 3];
+console.log(a1.some(isNumber)); // logs true
+var a2 = [1, '2', 3];
+console.log(a2.some(isNumber)); // logs true
+var a3 = ['1', '2', '3'];
+console.log(a3.some(isNumber)); // logs false
+reduce(callback[, initialValue]) applies callback(firstValue, secondValue) to reduce the list of items down to a single value and returns that value.
+
+var a = [10, 20, 30];
+var total = a.reduce(function(first, second) { return first + second; }, 0);
+console.log(total) // Prints 60
+reduceRight(callback[, initialValue]) works like reduce(), but starts with the last element.
+
+reduce and reduceRight are the least obvious of the iterative array methods. They should be used for algorithms that combine two values recursively in order to reduce a sequence down to a single value.
+
+Q: Multi-dimensional arrays
+var a = new Array(4);
+for (i = 0; i < 4; i++) {
+  a[i] = new Array(4);
+  for (j = 0; j < 4; j++) {
+    a[i][j] = '[' + i + ', ' + j + ']';
+  }
+}
+o/P: ow 0: [0, 0] [0, 1] [0, 2] [0, 3]
+Row 1: [1, 0] [1, 1] [1, 2] [1, 3]
+Row 2: [2, 0] [2, 1] [2, 2] [2, 3]
+Row 3: [3, 0] [3, 1] [3, 2] [3, 3]
+
+Q: What is typed arrays?
+JavaScript typed arrays are array-like objects and provide a mechanism for accessing raw binary data.
+
+Q: JavaScript Collections
+Map object
+var sayings = new Map();
+sayings.set('dog', 'woof');
+sayings.set('cat', 'meow');
+sayings.set('elephant', 'toot');
+sayings.size; // 3
+sayings.get('fox'); // undefined
+sayings.has('bird'); // false
+sayings.delete('dog');
+sayings.has('dog'); // false
+
+for (var [key, value] of sayings) {
+  console.log(key + ' goes ' + value);
+}
+// "cat goes meow"
+// "elephant goes toot"
+
+sayings.clear();
+sayings.size;
+Q: Set object
+var mySet = new Set();
+mySet.add(1);
+mySet.add('some text');
+mySet.add('foo');
+
+mySet.has(1); // true
+mySet.delete('foo');
+mySet.size; // 2
+
+for (let item of mySet) console.log(item);
+
+Comparison of class-based (Java) and prototype-based (JavaScript) object systems
+Class-based (Java)	Prototype-based (JavaScript)
+Class and instance are distinct entities.	All objects can inherit from another object.
+Define a class with a class definition; instantiate a class with constructor methods.	Define and create a set of objects with constructor functions.
+Create a single object with the new operator.	Same.
+Construct an object hierarchy by using class definitions to define subclasses of existing classes.	Construct an object hierarchy by assigning an object as the prototype associated with a constructor function.
+Inherit properties by following the class chain.	Inherit properties by following the prototype chain.
+Class definition specifies all properties of all instances of a class. Cannot add properties dynamically at run time.	Constructor function or prototype specifies an initial set of properties. Can add or remove properties dynamically to individual objects or to the entire set of objects.
+
+1. function Manager() {
+  Employee.call(this);
+  this.reports = [];
+}
+Manager.prototype = Object.create(Employee.prototype);
+Manager.prototype.constructor = Manager;
+
+function WorkerBee() {
+  Employee.call(this);
+  this.projects = [];
+}
+WorkerBee.prototype = Object.create(Employee.prototype);
+WorkerBee.prototype.constructor = WorkerBee;
+2. function SalesPerson() {
+   WorkerBee.call(this);
+   this.dept = 'sales';
+   this.quota = 100;
+}
+SalesPerson.prototype = Object.create(WorkerBee.prototype);
+SalesPerson.prototype.constructor = SalesPerson;
+
+function Engineer() {
+   WorkerBee.call(this);
+   this.dept = 'engineering';
+   this.machine = '';
+}
+Engineer.prototype = Object.create(WorkerBee.prototype)
+Engineer.prototype.constructor = Engineer;
+
+Note:  JavaScript does not support multiple inheritance.
+
+Q: Iterator
+In JavaScript an iterator is an object which defines a sequence and potentially a return value upon its termination. 
+
+Q: Generator 
+Generator functions provide a powerful alternative: they allow you to define an iterative algorithm by writing a single function whose execution is not continuous. Generator functions are written using the function* syntax. 
+function* makeRangeIterator(start = 0, end = Infinity, step = 1) {
+    let n = 0;
+    for (let i = start; i < end; i += step) {
+        n += 1;
+        yield i;
+    }
+    return n;
+}
+function* fibonacci() {
+  var fn1 = 0;
+  var fn2 = 1;
+  while (true) {  
+    var current = fn1;
+    fn1 = fn2;
+    fn2 = current + fn1;
+    var reset = yield current;
+    if (reset) {
+        fn1 = 0;
+        fn2 = 1;
+    }
+  }
+}
+
+var sequence = fibonacci();
+console.log(sequence.next().value);     // 0
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 2
+console.log(sequence.next().value);     // 3
+console.log(sequence.next().value);     // 5
+console.log(sequence.next().value);     // 8
+console.log(sequence.next(true).value); // 0
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 1
+console.log(sequence.next().value);     // 2
+
+Q: Web API's
+navigator.geolocation.getCurrentPosition(function(position) {
+  var latlng = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+  var myOptions = {
+    zoom: 8,
+    center: latlng,
+    mapTypeId: google.maps.MapTypeId.TERRAIN,
+    disableDefaultUI: true
+  }
+  var map = new google.maps.Map(document.querySelector("#map_canvas"), myOptions);
+});
+
+2. Fetch API
+fetch(url).then(function(response) {
+  response.text().then(function(text) {
+    poemDisplay.textContent = text;
+  });
+});
+
+fetch(url).then(function(response) {
+  return response.text()
+}).then(function(text) {
+  poemDisplay.textContent = text;
+});
+
+3. Video
+<video controls>
+  <source src="rabbit320.mp4" type="video/mp4">
+  <source src="rabbit320.webm" type="video/webm">
+  <p>Your browser doesn't support HTML5 video. Here is a <a href="rabbit320.mp4">link to the video</a> instead.</p>
+</video>
+
+5. Storing complex data — IndexedDB
+let request = window.indexedDB.open('notes', 1);
+
+=> strict mode is a way to opt in to a restricted variant of JavaScript, thereby implicitly opting-out of "sloppy mode"
+// Whole-script strict mode syntax
+'use strict';
+var v = "Hi! I'm a strict mode script!";
+
+Q: Mark-and-sweep algorithm
+  Used to clean the garbage Collections
+
+Q: Async:
+The AsyncFunction constructor creates a new async function object. In JavaScript every asynchronous function is actually an AsyncFunction object
+
+Q: Await:
+The await operator is used to wait for a Promise. It can only be used inside an async function.

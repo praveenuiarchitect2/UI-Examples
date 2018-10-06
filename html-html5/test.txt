@@ -1,0 +1,32 @@
+Q: preload 
+The preload value of the <link> element's rel attribute allows you to write declarative fetch requests in your HTML <head>
+<link rel="preload" href="style.css" as="style">
+  <link rel="preload" href="main.js" as="script">
+
+Q: crossorigin
+<link rel="preload" href="fonts/cicle_fina-webfont.eot" as="font" type="application/vnd.ms-fontobject" crossorigin="anonymous">
+
+Q: media
+
+ <link rel="preload" href="bg-image-narrow.png" as="image" media="(max-width: 600px)">
+  <link rel="preload" href="bg-image-wide.png" as="image" media="(min-width: 601px)">
+Q:application cache
+This feature deprecated for some latest browsers
+<html manifest="example.appcache">
+example.appcache
+CACHE MANIFEST
+# v1 2011-08-14
+# This is another comment
+index.html
+cache.html
+style.css
+image1.png
+
+# Use from network if available
+NETWORK:
+network.html
+
+# Fallback content
+FALLBACK:
+. fallback.html
+

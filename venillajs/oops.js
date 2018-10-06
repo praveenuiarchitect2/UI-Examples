@@ -20,3 +20,6 @@ function Person(name) {
   var person2 = new Person('Sarah');
   person1.greeting()
   person2.greeting()
+
+
+  Q: Create your own events
