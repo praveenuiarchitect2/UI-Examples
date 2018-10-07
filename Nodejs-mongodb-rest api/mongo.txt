@@ -1,0 +1,27 @@
+Download exe file from https://www.mongodb.com/download-center/v2/community
+
+C:\Program Files\MongoDB\Server\4.0\bin>mongo.exe --dbpath "C:\db\data" 
+C:\Program Files\MongoDB\Server\4.0\bin>mongo.exe
+
+1. Creating DB
+use DATABASE_NAME
+2. Find db:
+db.test.find()
+3. Know the DB details
+>>db.stats()
+4. Insert data on db:
+db.testdata.insert({"name":"Hello World"})
+5. drop database:
+db.dropDatabase()
+
+----------------------------
+1. Create Collections
+>db.createCollection("mycollection")
+>show collections
+>db.createCollection("mycol", { capped : true, autoIndexId : true, size : 
+   6142800, max : 10000 } )
+2. Drop Collection:
+db.COLLECTION_NAME.drop()
+3. update() is to update collections
+4. save() will be replace the collections
+5. MongoDB's remove() method is used to remove a document from the collection. remove() method accepts two parameters
