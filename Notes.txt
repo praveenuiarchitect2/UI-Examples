@@ -6,19 +6,18 @@ Redux
 5. Store
 
 
-1. Design patterns
-2. Custom event creating in javascript
-3. Nodejs express and MongoDb demos
-4. Image upload Demos all types
-5. design patters of react and angularjs
-6. singleton design patterns
-7. password send convert base64
-8. Reactjs
+1. Design patterns -- done
+2. Custom event creating in javascript -- done
+3. Nodejs express and MongoDb demos -- done
+4. Image upload Demos all types -- done
+5. design patters of react and angularjs -- done
+6. singleton design patterns -- done
+7. password send convert base64 -- done
+8. Reactjs and ES6
 9. React native sample app creating
 10. Angular2
 11. Typescript
 12. Photoshop designing mocks
-13. ES6 
 -------------------------------
 Apps Development
 

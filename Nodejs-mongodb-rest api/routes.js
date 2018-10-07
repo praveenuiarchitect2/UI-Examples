@@ -12,29 +12,35 @@ var db;
 
 var storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      cb(null, 'public/images/uploads')
+        cb(null, 'public/images/uploads')
     },
     filename: (req, file, cb) => {
-      cb(null, file.fieldname + '-' + Date.now())
+        cb(null, file.fieldname + '-' + Date.now())
     }
 });
-var upload = multer({storage: storage});
+var upload = multer({
+    storage: storage
+});
 app.post('/fileUpload', upload.single('image'), (req, res, next) => {
-        // insertDocuments(db, 'public/images/uploads/' + req.file.filename + '.'+ path.extname(req.file.originalname), () => {
-        //    // db.close();
-        //     res.json({'message': 'File uploaded successfully'});
-        // });
+    // insertDocuments(db, 'public/images/uploads/' + req.file.filename + '.'+ path.extname(req.file.originalname), () => {
+    //    // db.close();
+    //     res.json({'message': 'File uploaded successfully'});
+    // });
 
-          insertDocuments(db, 'public/images/uploads/' + req.file.originalname, () => {
-           // db.close();
-            res.json({'message': 'File uploaded successfully'});
+    insertDocuments(db, 'public/images/uploads/' + req.file.filename + path.extname(req.file.originalname), () => {
+        // db.close();
+        res.json({
+            'message': 'File uploaded successfully'
         });
-   
+    });
+
 });
 
-var insertDocuments = function(db, filePath, callback) {
+var insertDocuments = function (db, filePath, callback) {
     var collection = db.collection('fileupload');
-    collection.insertOne({'imagePath' : filePath }, (err, result) => {
+    collection.insertOne({
+        'imagePath': filePath
+    }, (err, result) => {
         //assert.equal(err, null);
         callback(result);
     });
@@ -84,13 +90,13 @@ app.use(bodyParser.json());
 
 app.post('/user', function (req, res) {
     console.log(req.body)
-   // res.send(req)
-    db.collection('users').insert(req.body, function(err, result) {
-            if (err) throw err
-            res.send("Inserted")
-            console.log(result)
-        })
-   // res.send("Post Method called")
+    // res.send(req)
+    db.collection('users').insert(req.body, function (err, result) {
+        if (err) throw err
+        res.send("Inserted")
+        console.log(result)
+    })
+    // res.send("Post Method called")
 });
 
 // app.all('/secret', function (req, res, next) {
