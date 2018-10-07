@@ -49,7 +49,7 @@ class Welcome extends React.Component {
             <div className="panel-heading">
               <ul className="nav nav-tabs">
                 <li className="active nav-item">
-                  <a className="" data-toggle="tab" href="#reactjstab">ReactJS</a>
+                  <a data-toggle="tab" href="#reactjstab">ReactJS</a>
                 </li>
                 <li>
                   <a href="#reactnative" data-toggle="tab">
@@ -89,7 +89,7 @@ class Welcome extends React.Component {
                   <div className={showForm ? 'show' : 'hide'}>
                   <div className="row">
                     <div className="col-md-4 col-lg-4">
-                      <a  class="previous" onClick={this.showPreviousPage}>&laquo; Previous</a>
+                      <a  className="previous" onClick={this.showPreviousPage}>&laquo; Previous</a>
                     </div>
                   </div>
        

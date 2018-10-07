@@ -2,10 +2,43 @@
 // var fs = require('fs');
 // var url = require('url');
 var express = require('express')
+var multer = require('multer');
+var mime = require('mime')
+var path = require('path')
 //const bodyParser = require("body-parser");
 var app = express();
 var MongoClient = require('mongodb').MongoClient
 var db;
+
+var storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+      cb(null, 'public/images/uploads')
+    },
+    filename: (req, file, cb) => {
+      cb(null, file.fieldname + '-' + Date.now())
+    }
+});
+var upload = multer({storage: storage});
+app.post('/fileUpload', upload.single('image'), (req, res, next) => {
+        // insertDocuments(db, 'public/images/uploads/' + req.file.filename + '.'+ path.extname(req.file.originalname), () => {
+        //    // db.close();
+        //     res.json({'message': 'File uploaded successfully'});
+        // });
+
+          insertDocuments(db, 'public/images/uploads/' + req.file.originalname, () => {
+           // db.close();
+            res.json({'message': 'File uploaded successfully'});
+        });
+   
+});
+
+var insertDocuments = function(db, filePath, callback) {
+    var collection = db.collection('fileupload');
+    collection.insertOne({'imagePath' : filePath }, (err, result) => {
+        //assert.equal(err, null);
+        callback(result);
+    });
+}
 
 MongoClient.connect('mongodb://localhost:27017/mydb', {
     useNewUrlParser: true

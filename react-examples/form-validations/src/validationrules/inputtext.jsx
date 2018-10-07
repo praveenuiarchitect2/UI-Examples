@@ -108,8 +108,8 @@ class InputText extends React.Component {
       case 'optradio':
         let ele = $$('[name=optradio]')
         let isChecked = false
-        for(let i =0, len=ele.length; i<len; i++) {
-          if(ele[i].checked) {
+        for (let i = 0, len = ele.length; i < len; i++) {
+          if (ele[i].checked) {
             isChecked = true
           }
         }
@@ -137,7 +137,7 @@ class InputText extends React.Component {
   }
   render() {
 
-    if (this.props.type == 'text' || this.props.type == 'password' || this.props.type == 'email') {
+    if (this.props.type == 'text' || this.props.type == 'password' || this.props.type == 'email' || this.props.type == 'phone') {
       return (
         <input type={this.props.type} name={this.props.name}
           id={this.props.id} ref={this.props.name} className={this.props.className + ' formelement'} defaultValue={this.props.defaultValue}

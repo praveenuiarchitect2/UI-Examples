@@ -2,12 +2,11 @@ import axios from 'axios'
 import { hashHistory } from 'react-router'
 import bootbox from 'bootbox'
 import cbootbox from '../common/bootbox'
-import i18n from '../../public/i18n/en.json'
 import 'react-block-ui/style.css'
 import $$ from 'jquery'
 
 require('./blockUI.scss')
-
+let i18n = {}
 function blockElement () {
   return '<div class="block-ui"></div><div class="block-ui-msg"><i class="fa fa-spinner fa-spin fa-3x"></i><h3>Please wait<span class="loading"></span></h3></div>'
 }
@@ -85,7 +84,7 @@ function addLogging (error) {
   }
 }
 
-const ApiCallManager = {
+const AjaxCalls = {
   getCall: function (obj, callback) {
     if (localStorage.getItem('token')) {
       myApi.defaults.headers.token = localStorage.getItem('token')
