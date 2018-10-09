@@ -1,13 +1,38 @@
 1. What is react js
-2. What is higher order component
+ANS: React is Js library  which is written by facebook.
+2. What is higher order component;
+ANS Higher order component is wrapped another component which will return same
 3. React Stateless and stateful component
+  Stateless component does't have life cycle hooks
+  stateful component have life cycle hooks
 4. What is use of redux
+   Redux is state management light weight library which will maintain state of redux
 5. Draw redux with React daigram
+	=> Component
+	=> Reducer
+	=> actions
+	=> Constants
+	=> Store
 6. React life cycle and explain each methods
+ANS: 
+=> componentWillMount is executed before rendering
+=> componentDidMount is executed after the first render only on the client side
+=> componentWillReceiveProps is invoked as soon as the props are updated before another render is called
+=> shouldComponentUpdate should return true or false value. This will determine if the component will be updated or not.
+=> componentWillUpdate is called just before rendering.
+=> componentDidUpdate is called just after rendering.
+=> componentWillUnmount is called after the component is unmounted from the dom
+=> Constructor
+=> Render
 7. Disadvantage of reactjs
+   Reactjs disadvantage is tricky to learn novice developers
+   it's not fledged framework
 8. What is virtual dom
-9. How do you test cases using reactjs
+   Virtual dom is replica of actual dom node which will maintain dom structure update and render
+9. How do you test  using reactjs
+   Reactjs support karma and jasmine framwork on top, jest framework also can be used for testing framework
 10. Differentiate between Real DOM and Virtual DOM.
+    Real dom always rerender when ever some element 
 11. What are the features of React? 
 12. List some of the major advantages of React.
 13. What are the limitations of React?
@@ -28,6 +53,7 @@
 28. What is an event in React?
 29. How do you create an event in React?
 30. What are synthetic events in React?
+    Your event handlers will be passed instances of SyntheticEvent, a cross-browser wrapper around the browser’s native event. It has the same interface as the browser’s native event, including stopPropagation() and preventDefault(), except the events work identically across all browsers.
 31. What do you understand by refs in React?
 32. List some of the cases when you should use Refs.
 33. How do you modularize code in React?
@@ -53,3 +79,4 @@
 53. Why do we need a Router in React?
 54. List down the advantages of React Router.
 55. How is React Router different from conventional routing?
+
