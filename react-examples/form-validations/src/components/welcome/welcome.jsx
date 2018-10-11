@@ -83,6 +83,7 @@ class Welcome extends React.Component {
                       <li><a href="#">Higher Order Components</a></li>
                       <li><a href="#">React/Redux</a></li>
                       <li><a href="#">Stateless/Stateful Components</a></li>
+                      <li><a href="#">Server Side rendering</a></li>
                       <li><a href="#">FAQ's</a></li>
                     </ul>
                   </div>
