@@ -19,6 +19,7 @@ Redux
 11. Typescript
 12. Photoshop designing mocks
 13. New added from Praveen
+14
 -------------------------------
 Apps Development
 
