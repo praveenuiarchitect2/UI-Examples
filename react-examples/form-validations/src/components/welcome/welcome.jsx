@@ -24,7 +24,20 @@ class Welcome extends React.Component {
     this.setState({ showForm: true })
     if (tar === '1') {
       hashHistory.push('/formvalidation')
-    } else {
+    }
+    else if(tar === '4'){
+      hashHistory.push('/ajax')
+    }
+    else if(tar ===  '6'){
+      hashHistory.push('/ajax1')
+    }
+    else if(tar === 'vivek'){
+      hashHistory.push('/ajax2')
+    }
+    else if(tar === '7'){
+      hashHistory.push('/ajax3')
+    }
+    else {
       hashHistory.push('/')
     }
   }
@@ -70,6 +83,8 @@ class Welcome extends React.Component {
                     <li><a href="#designpatterns" data-toggle="tab">Design Patterns</a></li>
                     <li><a href="#tools" data-toggle="tab">Tools/Build</a></li>
                     <li><a href="#es6" data-toggle="tab">Tools/Build</a></li>
+            
+                   
                   </ul>
                 </li>
               </ul>
@@ -85,6 +100,10 @@ class Welcome extends React.Component {
                       <li><a href="#">Stateless/Stateful Components</a></li>
                       <li><a href="#">Server Side rendering</a></li>
                       <li><a href="#">FAQ's</a></li>
+                      <li><a href="#" name='4'>Ajax Example </a></li>
+                      <li><a onClick={this.handleClick} name='6'>Ajax Example1 </a></li>
+                      <li><a onClick={this.handleClick} name='vivek'>Ajax Example2</a></li>
+                      <li><a onClick={this.handleClick} name='7'>Ajax Example2</a></li>
                     </ul>
                   </div>
                   <div className={showForm ? 'show' : 'hide'}>
