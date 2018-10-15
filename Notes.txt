@@ -17,7 +17,7 @@ Redux
 9. React native sample app creating
 10. Angular2
 11. Typescript
-12. Photoshop designing mocks
+12. Photoshop designing mocks  
 13. New added from Praveen
 14
 -------------------------------
