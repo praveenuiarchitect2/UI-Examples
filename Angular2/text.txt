@@ -1,0 +1,4 @@
+step1: npm install -g @angular/cli
+step2: ng new my-app
+step3: cd my-app
+step4: ng serve --open
