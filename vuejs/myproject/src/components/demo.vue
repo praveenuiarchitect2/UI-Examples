@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-      Iam in Demo
+      Iam in Demo {{msg}}
   </div>
 </template>
 
