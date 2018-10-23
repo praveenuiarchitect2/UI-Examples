@@ -1,0 +1,4 @@
+step1: npm install --global vue-cli
+step2: vue init webpack myproject
+step3: cd myproject
+step4: npm run dev
