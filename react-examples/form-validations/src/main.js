@@ -4,10 +4,7 @@ import { Provider } from 'react-redux'
 import { Router, Route, hashHistory } from 'react-router'
 import Welcome from './components/welcome/welcome'
 import FormValidations from './components/form/form'
-import Ajax from './components/ajaxexample/ajax'
-import Ajax1 from './components/ajaxexample1/ajax1'
-import Ajax2 from './components/ajaxexample2/ajax2'
-import Ajax3 from './components/ajaxexample3/ajax3'
+import FlightSearchForm from './components/flight-search-engine/flight-search-form'
 require('../node_modules/jquery/dist/jquery.js')
 require('../node_modules/jquery-ui-dist/jquery-ui.js')
 require('es6-promise/auto')
@@ -51,10 +48,7 @@ let render = () => {
           <Route components={FormValidations} path='/formvalidation' onEnter={checkLoggedIn}/>
           <Route components={FormValidations} path='/' onEnter={checkLoggedIn}/>
         </Route>
-        <Route components={Ajax} path='/ajaxexample' onEnter={checkLoggedIn} />
-        <Route components={Ajax1} path='/ajax1' onEnter={checkLoggedIn} />
-        <Route components={Ajax2} path='/ajax2' onEnter={checkLoggedIn} />
-        <Route components={Ajax3} path='/ajax3' onEnter={checkLoggedIn} />
+        <Route components={FlightSearchForm} path="/flightsearch" />
               </Router>
     </Provider>,
     MOUNT_NODE)
