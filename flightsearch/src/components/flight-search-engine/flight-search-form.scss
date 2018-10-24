@@ -82,7 +82,8 @@
         border-bottom: 1px solid #ccc;
       }
       .display-section {
-          height: 500px;
+        min-height: 500px;
+        height: auto;
       }
       .display-section,
       .sub-section-header {
