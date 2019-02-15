@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import {RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import {NewComponent} from './../newcomp/newcomp.component';
-import {NewComponent1} from './../newcomp1/newcomp.component';
+import {NewComponent1} from './../newcomp1/newcomp1.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,16 @@ import {NewComponent1} from './../newcomp1/newcomp.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot( [
+        { path: 'new-1', component: NewComponent },
+        { path: 'new-2', component: NewComponent1 },
+        // { path: '**', component: NewComponent }
+        {
+          path: '',
+          redirectTo: 'new-1',
+          pathMatch: 'full'
+        },
+      ])
   ],
   providers: [],
   bootstrap: [AppComponent]
