@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div class="newapp-main">
+  <h5 class="sub-main">
+    New module
+    <button [disabled]="isUnchanged" class="btn btn-primary">Save</button>
+    <div><div [ngClass]="{'special': isSpecial}"></div></div>
+    <img [src]="heroImageUrl">
+    <button [style.color]="isSpecial ? 'red' : 'green'">Hello</button>
+    <img bind-src="heroImageUrl">
+    <p><img src="{{heroImageUrl}}"> is the <i>interpolated</i> image.</p>
+<p><img [src]="heroImageUrl"> is the <i>property bound</i> image.</p>
+
+<p><span>"{{title}}" is the <i>interpolated</i> title.</span></p>
+<p>"<span [innerHTML]="title"></span>" is the <i>property bound</i> title.</p>
+
+  </h5>
+  <p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>
+<p>"<span [innerHTML]="evilTitle"></span>" is the <i>property bound</i> evil title.</p>
+<div [class.special]="!isSpecial">The class binding is special</div>
+</div>

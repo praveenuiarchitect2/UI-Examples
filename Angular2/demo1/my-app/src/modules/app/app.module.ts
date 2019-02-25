@@ -4,25 +4,19 @@ import {RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import {NewComponent} from './../newcomp/newcomp.component';
 import {NewComponent1} from './../newcomp1/newcomp1.component';
+import {AppRoutingModule} from './app-routing.module'
+import {newModule} from './../newmodule/newcomp1.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NewComponent,
-    NewComponent1
+    NewComponent1,
+    newModule
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot( [
-        { path: 'new-1', component: NewComponent },
-        { path: 'new-2', component: NewComponent1 },
-        // { path: '**', component: NewComponent }
-        {
-          path: '',
-          redirectTo: 'new-1',
-          pathMatch: 'full'
-        },
-      ])
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
