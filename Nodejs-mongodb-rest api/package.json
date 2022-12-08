@@ -3,7 +3,7 @@
   "version": "",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "expressjs": "^1.0.1",
     "mime": "^2.3.1",
     "mongodb": "^3.1.6",
