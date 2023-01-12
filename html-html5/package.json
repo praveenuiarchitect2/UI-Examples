@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "pushstate-server": "^3.0.1"
+    "pushstate-server": "^3.1.0"
   }
 }
